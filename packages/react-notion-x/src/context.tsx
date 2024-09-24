@@ -75,11 +75,31 @@ export interface PartialNotionContext {
   zoom?: any
 }
 
-const DefaultLink: React.FC = (props) => (
-  <a target='_blank' rel='noopener noreferrer' {...props} />
+// external links
+const DefaultLink: React.FC = (props: any) => (
+  <a
+    target='_blank'
+    rel='noopener noreferrer'
+    {...props}
+    onClick={(e) => {
+      window.top.postMessage({ link: props.href }, '*')
+      e.preventDefault()
+    }}
+  />
 )
 const DefaultLinkMemo = React.memo(DefaultLink)
-const DefaultPageLink: React.FC = (props) => <a {...props} />
+
+// pages
+const DefaultPageLink: React.FC = (props: any) => (
+  <a
+    {...props}
+    onClick={(e) => {
+      window.top.postMessage({ page: props.href }, '*')
+      e.preventDefault()
+    }}
+  />
+)
+
 const DefaultPageLinkMemo = React.memo(DefaultPageLink)
 
 const DefaultEmbed = (props) => <AssetWrapper {...props} />

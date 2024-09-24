@@ -1,7 +1,7 @@
 import * as React from 'react'
 
+import { ImageState, LazyImageFull } from '@jbogs/react-lazy-images'
 import { normalizeUrl } from 'notion-utils'
-import { ImageState, LazyImageFull } from 'react-lazy-images'
 
 import { useNotionContext } from '../context'
 import { cs } from '../utils'
